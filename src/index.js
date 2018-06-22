@@ -1,4 +1,5 @@
 
+// default options for loading overlay
 const _defaults = {
 	style: {
 		backgroundColor: "rgba(255,255,255, 1)",
@@ -14,6 +15,10 @@ const Loading = {
 
 	install (Vue, options) {
 
+		if (options) {
+			_defaults = Object.assign(_defaults, options)
+		}
+
 		// Register a global custom directive called `v-loading`
 		Vue.directive('loading', {
 		  // When the bound element is inserted into the DOM...
@@ -27,12 +32,14 @@ const Loading = {
 
 		    mask.setAttribute('id', id)
 
-		    let options = Object.assign(JSON.parse(JSON.stringify(_defaults)), binding.value)
+		    let _defaults_clone = JSON.parse(JSON.stringify(_defaults))
+
+		    let b_options = typeof binding.value === "object" ? Object.assign(_defaults_clone, binding.value) : _defaults_clone
 
 		    let container
 
-		    if (options.container) {
-				container = document.querySelector(options.container)
+		    if (b_options.container) {
+				container = document.querySelector(b_options.container)
 				if (!container) return
 				container.style.position = "relative"
 			}
@@ -70,7 +77,9 @@ const process = (el, binding) => {
 
     let offset = getRect(el)
 
-	let options = Object.assign(JSON.parse(JSON.stringify(_defaults)), binding.value)
+	let _defaults_clone = JSON.parse(JSON.stringify(_defaults))
+
+	let options = typeof binding.value === "object" ? Object.assign(_defaults_clone, binding.value) : _defaults_clone
 
     if (options.container) {
 		
@@ -110,6 +119,7 @@ const process = (el, binding) => {
   	}
 }
 
+// get the width, height & position of the element
 const getRect = function(el) {
     
     let rect = el.getBoundingClientRect(),
@@ -121,6 +131,7 @@ const getRect = function(el) {
     return { left: rect.left + scrollLeft, top: rect.top + scrollTop, width: rect.width, height: rect.height }
 }
 
+// random id generator
 const randomId = function() {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
