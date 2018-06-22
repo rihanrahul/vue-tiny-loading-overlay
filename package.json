@@ -1,6 +1,6 @@
 {
   "name": "vue-tiny-loading-overlay",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tiny lightweight loading overlay directive for Vue.js 2x",
   "main": "dist/index.js",
   "scripts": {
