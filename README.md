@@ -114,3 +114,15 @@ export default {
 }
 </script>
 ```
+
+### Change Bg colors
+
+```html
+<div v-loading:black="isLoading">
+	.. your content html block
+</div>
+
+<div v-loading:red="isLoading">
+	.. your content html block
+</div>
+```
