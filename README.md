@@ -68,8 +68,49 @@ Vue.use(Loading, {
   }, // the loading overlay background color & opacity
   text: '', // the text to show when the loading overlay is shown - default blank
   html: '', // the html to be injected inside loading overlay. (like custom loading spinner) - default blank
-  container: '' // id of the container if the element is inside a horizontal or vertical scrolling block
+  container: '', // id of the container if the element is inside a horizontal or vertical scrolling block
+  active: false
 })
 ```
 
 ## Step 2: Start defining `v-loading`
+
+### Default
+
+```html
+<div v-loading="isLoading">
+	.. your content html block
+</div>
+```
+
+```js
+<script>
+
+export default {
+  data () {
+    return {
+      list: [],
+      isLoading: false
+    }
+  },
+  methods: {
+    callApi: function(){
+
+      this.isLoading = true
+            
+      $this.doSomeAjax(function(data){
+      	
+      	this.isLoading = false
+        
+        this.list = data
+
+      })
+
+    }
+  },
+  mounted: function(){
+    this.callApi()
+  }
+}
+</script>
+```
