@@ -1,6 +1,6 @@
 
 // default options for loading overlay
-const _defaults = {
+var _defaults = {
 	style: {
 		backgroundColor: "rgba(255,255,255, 1)",
 		opacity: "0.7"
