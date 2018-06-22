@@ -1,6 +1,6 @@
 {
   "name": "vue-tiny-loading-overlay",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tiny lightweight loading overlay directive for Vue.js 2x",
   "main": "dist/index.js",
   "scripts": {
@@ -24,9 +24,7 @@
     "url": "https://github.com/rihanrahul/vue-tiny-loading-overlay/issues"
   },
   "homepage": "https://github.com/rihanrahul/vue-tiny-loading-overlay#readme",
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",
